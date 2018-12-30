@@ -4,7 +4,7 @@ require('../model/user.php');
 class UserDAO {
     private $servername= 'localhost';
     private $username = 'root';
-    private $password = '123456';
+    private $password = '';
     private $dbname = 'booking';
     private $conn = null;
 
@@ -18,7 +18,7 @@ class UserDAO {
 
     function connect(){
         try{
-            $this->conn = new PDO('mysql:host=$this->servername;dbname=$this->dbname', $this->username, $this->password);
+            $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch(PDOException $e)
@@ -44,7 +44,7 @@ class UserDAO {
         foreach($res as $row){
             $obj = new User();
             $obj->setUserName($row['username']);
-            $obj->setPassword($row['password']);
+            $obj->setPassword($row['PASSWORD']);
             $result[$i] = $obj; 
             $i++;
         }
