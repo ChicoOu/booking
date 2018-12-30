@@ -13,32 +13,32 @@ class UserDAO {
     }
 
     function __destruct(){
-        $conn = null;
+        $this->conn = null;
     }
 
     function connect(){
         try{
-            $conn = new PDO('mysql:host=$servername;dbname=$dbname', $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conn = new PDO('mysql:host=$servername;dbname=$dbname', $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch(PDOException $e)
         {
             echo($e->getMessage());
-            $conn = null;
+            $this->conn = null;
         }
     }
 
     function getAllUsers(){
-        if( $conn == null ){
-            connect();
+        if( $this->conn == null ){
+            $this->connect();
         } 
 
-        if( $conn == null ){
+        if( $this->conn == null ){
             return null;
         }
 
         $sql = "SELECT * FROM user"; 
-        $res = $pdo->query($sql);
+        $res = $this->conn->query($sql);
         $result = array();
         $i = 0;
         foreach($res as $row){
@@ -48,7 +48,6 @@ class UserDAO {
             $result[$i] = $obj; 
             $i++;
         }
-        $conn = null;
         return $result;
     }
 }
