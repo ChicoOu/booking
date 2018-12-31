@@ -6,10 +6,10 @@ echo("Hello!");
 
 require('./common/requesthelper.php');
 $helper = RequestHelper::getInstance();
-if( $helper.isGet() ){
+if( $helper->isGet() ){
     echo("It's a get method!");
 }
-else if( $helper.isPost() ){
+else if( $helper->isPost() ){
     echo("It's a post method!");
 }
 else{

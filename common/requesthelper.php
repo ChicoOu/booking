@@ -6,7 +6,7 @@ class RequestHelper{
         
     }
 
-    private function __destruct(){
+    public function __destruct(){
         
     }
 
@@ -31,13 +31,13 @@ class RequestHelper{
 &&(empty($_SERVER['HTTP_REFERER']) || preg_replace("~https?:\/\/([^\:\/]+).*~i", "\\1", $_SERVER['HTTP_REFERER']) == preg_replace("~([^\:]+).*~", "\\1", $_SERVER['HTTP_HOST']))) ? true : false;
     }
 
-    /* public function isAjax(){
+    public function isAjax(){
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
             strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             return true;
         }else{
             return false;
         }
-        } */
+   }
 }
 ?>
