@@ -1,0 +1,44 @@
+<div [style.background-color]="'yellow'">
+  使用固定黄色作为背景色
+</div>
+
+<div [ngStyle]="{color:'white', 'background-color':'blue'}">
+  白色字体蓝色背景
+</div>
+
+<div class="ui input">
+  <input type="text" name="color" value="{{mycolor}}" #colorinput>
+</div>
+
+<div class="ui input">
+  <input type="text" name="fontsize" value="{{fontSize}}" #fontinput>
+</div>
+
+<button class="ui primary button" (click)="apply(colorinput.value, fontinput.value)">
+  应用
+</button>
+
+<div>
+  <span [ngStyle]="{color:mycolor}" [style.font-size.px]="fontSize">
+    测试文本
+  </span>
+</div>
+<h4 class="ui horizontal divider header">
+  ngStyle变量测试
+</h4>
+
+<div>
+  <span [ngStyle]="{color:mycolor}">
+    {{color}} text
+  </span>
+</div>
+
+<h4 class="ui horizontal divider header">
+  style变量测试
+</h4>
+
+<div>
+  <span [style.background-color]="mycolor">
+    {{color}} text
+  </span>
+</div>

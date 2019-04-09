@@ -1,0 +1,10 @@
+<div [ngClass]="{bordered:false}">无边框</div>
+<div [ngClass]="{bordered:true}">有边框</div>
+<div style="margin-top:20px;">
+  <button class="ui primary button" (click)="toggleBorder()">
+    切换边框
+  </button>
+</div>
+<div [ngClass]="{bordered:isBordered}">
+  动态边框控制，{{isBordered?"有":"没有"}}边框
+</div>

@@ -1,0 +1,28 @@
+<div style="margin-top:20px;">
+  <button class="ui primary button" (click)="toggleShow()">
+    {{btnName()}}
+  </button>
+  <button class="ui primary button" (click)="toggleMyShowCourse()">
+    {{showCourse == 2 ? '显示必修课':'显示全部'}}
+  </button>
+</div>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <td>学号</td>
+      <td>姓名</td>
+      <td>性别</td>
+      <td *ngIf='showCourse == 2'>Web</td>
+      <td>嵌入式</td>
+    </tr>
+  </thead>
+  <tr *ngFor='let s of students'>
+    <td *ngIf="showMale == 2 || s.gender == showMale">{{s.id}}</td>
+    <td *ngIf="showMale == 2 || s.gender == showMale">{{s.name}}</td>
+    <td *ngIf="showMale == 2 || s.gender == showMale">{{s.gender == '1'? '男':'女'}}</td>
+    <td [ngStyle]="countStyle(s.web.count)" 
+    *ngIf="showCourse == 2 && (showMale == 2 || s.gender == showMale)">
+      {{s.web.count}}</td>
+    <td [ngStyle]="countStyle(s.embeded.count)" *ngIf="showMale == 2 || s.gender == showMale">{{s.embeded.count}}</td>
+  </tr>
+</table>
